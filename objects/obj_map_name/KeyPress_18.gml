@@ -1,0 +1,1 @@
+//show_message(map_txt);
