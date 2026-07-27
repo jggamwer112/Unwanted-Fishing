@@ -11,4 +11,4 @@ with obj_boat_game{
 	}
 }
 
-if x<-5{instance_destroy();}
+if x<-5{instance_destroy(); score++;}

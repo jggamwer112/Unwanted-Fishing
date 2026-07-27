@@ -1,4 +1,7 @@
-image_xscale=2.5;
-image_yscale=2.5;
+scale=2.5
+image_xscale=0;
+image_yscale=0;
 
-alarm[0]=35;
+alarm[0]=28;
+
+destroy=false;

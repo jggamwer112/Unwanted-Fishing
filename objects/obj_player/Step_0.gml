@@ -26,6 +26,7 @@ if life<=0{
 if die{sprite_index=spr_player_death}
 if sprite_index=spr_player_death and image_index=4{hitstop(340)}
 
+if global.pause exit;
 if die exit;
 if move_anim exit;
 

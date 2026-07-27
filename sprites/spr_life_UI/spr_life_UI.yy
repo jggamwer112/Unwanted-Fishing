@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"player",
-    "path":"folders/Game/sprites/ocean_maps/player.yy",
+    "name":"UI",
+    "path":"folders/Game/sprites/ocean_maps/player/UI.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

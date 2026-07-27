@@ -1,3 +1,4 @@
+if global.pause exit;
 #region //IA
 #region////Seguindo
 //var _col=place_meeting(x+speed,y,obj_col);

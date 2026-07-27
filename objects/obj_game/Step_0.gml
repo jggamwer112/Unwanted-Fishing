@@ -16,4 +16,6 @@ if !audio_is_playing(snd_death_waiting_2){
 	randomise();
 audio_play_sound(snd_death_waiting_2,2,false,1,0,pitch);
 }
+}else{
+	audio_stop_sound(snd_death_waiting_2);
 }

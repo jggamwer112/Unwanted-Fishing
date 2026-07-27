@@ -1,1 +1,1 @@
-audio_stop_sound(sound);
+audio_stop_all();

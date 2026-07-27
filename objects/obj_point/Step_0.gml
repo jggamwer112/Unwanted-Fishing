@@ -1,5 +1,6 @@
 if position_meeting(mouse_x,mouse_y,id) and !occupied{
-image_blend=c_red	
+	var color=#46878F
+image_blend=color
 
 
 
@@ -10,7 +11,7 @@ if mouse_check_button_pressed(mb_left) and !instance_exists(obj_transicao){
 	dir_x=near.pos_x;	
 	dir_y=near.pos_y;	
 	var _inst=instance_create_layer(room_width/2,room_height/2,"transicao",obj_transicao);
-_inst.destiny=rm_o_pacific
+_inst.destiny=other.dest;
 	near.occupied=true;
 }
 
@@ -18,7 +19,7 @@ _inst.destiny=rm_o_pacific
 }else{
 	with obj_map_name{
 
-map_points_txt=""
+map_points_txt="";
 
 }
 	image_blend=c_white

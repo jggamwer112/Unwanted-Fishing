@@ -1,11 +1,13 @@
 randomise();
 map_txt=choose(
 "Fishandila",
-"boatin' land",
-"Path of fishers",
+"Boatin' Land",
+"Path of Fishers",
 "Seas of Shoals",
 "United Fis'hes",
-"New hooksland",
-"South hook");
+"New Hooksland",
+"South Hook",
+"Ghost Anglers",
+"Flying Dutchman Sea");
 map_points_txt="";
 

@@ -1,4 +1,5 @@
 #region /// life
+life=clamp(life,0,3);
 if life<=0{
 	
 	global.game_over=true;
@@ -7,24 +8,26 @@ if life<=0{
 #endregion
 
 #region mov
+var dash=keyboard_check_pressed(vk_shift)
 if !global.game_over{
 var _A=keyboard_check(ord("A"))
 var _D=keyboard_check(ord("D"))
 var _S=keyboard_check(ord("S"))
 var _W=keyboard_check(ord("W"))
 
-if keyboard_check(vk_left) or _A{image_angle+=2.75 motion_add(image_angle,-.012)	}
-if keyboard_check(vk_right) or _D{image_angle-=2.75 motion_add(image_angle,-.012)}
+
+if keyboard_check(vk_left) or _A{image_angle+=1.75 motion_add(image_angle,.05)	}
+if keyboard_check(vk_right) or _D{image_angle-=1.75 motion_add(image_angle,.05)	}
 
 if keyboard_check(vk_up) or _W{
 	
-motion_add(image_angle,.06)	
+motion_add(image_angle,.062)	
 	
 }
 if (keyboard_check(vk_down) or _S){
 
 	if  speed>.05{
-motion_add(direction,-.06)	
+motion_add(direction,-.09)	
 	}
 }
 }
@@ -32,7 +35,10 @@ motion_add(direction,-.06)
 
 x=clamp(x,20,room_width)
 y=clamp(y,20,room_height)
-speed=clamp(speed,0,2.55)
+speed=clamp(speed,-.75,2.75)
+
+
+//if dash{speed=36.75 afterimage=true;}
 #endregion
 #region//hit
 
@@ -51,7 +57,7 @@ col_int=clamp(col_int,0,1)
 #endregion
 
 #region atk
-if !instance_exists(obj_defense_boat){
+if instance_number(obj_defense_boat)<3{
 if keyboard_check_pressed(ord("F")){
 	
 var _def=instance_create_depth(x,y,depth-1,obj_defense_boat);	
@@ -64,6 +70,12 @@ var _def=instance_create_depth(x,y,depth-1,obj_defense_boat);
 
 if invincible{
 	
-image_blend=c_red;	
+sprite_index=spr_boat_game_ocean_invincible
 	
-}else{image_blend=c_white;}
+}else{sprite_index=spr_boat_game_ocean}
+
+#region//score
+score=clamp(score,0,100);
+
+if score>=100{score=0 if life<3{life++;}}
+#endregion

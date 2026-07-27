@@ -1,3 +1,4 @@
+if global.pause exit;
 if place_meeting(x,y,obj_defense_boat){repel=true; drop_items=true;}
 
 if instance_exists(obj_boat_game){

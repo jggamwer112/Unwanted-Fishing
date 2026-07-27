@@ -1,3 +1,5 @@
+//window_set_cursor(cr_none);
+//cursor_sprite=spr_cursor;
 window_set_size(720,512);
 fullscreen=false;
 //mapas
@@ -23,3 +25,5 @@ bosses: bss_
 
 global.game_over=false;
 global.restart_map=false;
+global.path="";
+global.point_decide=0;

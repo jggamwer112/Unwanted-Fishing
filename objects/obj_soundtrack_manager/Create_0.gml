@@ -1,1 +1,3 @@
-sound=snd_menu;
+rm=room;
+
+
