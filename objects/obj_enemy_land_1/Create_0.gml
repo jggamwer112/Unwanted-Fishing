@@ -23,8 +23,12 @@ stun=false;
 stun_time=60;
 //atk
 range_atk=35; ///range que ativa o ataque
-atk=false; //indica se o inimigo está atacando
-can_atk=true; //indica se é possível atacar
-atk_time=60 ///tempo para recuperar a capacidade de atacar
-recover=false ///indica se o inimigo pode revidar mesmo durante um combo
-recover_charge=0; //// indica a carga necessária para que o inimigo consiga revidar
+attacking=false;//indica se está atacando
+can_atk=true; //indica se pode atacar
+atk_cd=90// cooldown do atk
+stun=false //indica se está stunnado
+stun_by_atk=false; ///indica se ele está paralizado pois seu ataque foi interrompido
+stun_time=90//tempo do stun
+default_resistence=50;
+resistence=default_resistence; ////quando essa variável chega a 0, o inimigo fica "imune" a qualquer stun por ataque
+resistence_time=45/// tempo que a resistencia dura

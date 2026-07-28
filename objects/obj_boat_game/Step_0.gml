@@ -2,11 +2,21 @@
 life=clamp(life,0,3);
 if life<=0{
 	
-	global.game_over=true;
+gravity=.18
+visible=false;
+layer_set_visible("screen_shake",true);
+death=true
 	
 }
-#endregion
 
+if death{
+if !instance_exists(obj_boat_death_1){instance_create_layer(x-20,y,"instances",obj_boat_death_1)}
+if !instance_exists(obj_boat_death_2){instance_create_layer(x+20,y,"instances",obj_boat_death_2)}
+if !instance_exists(obj_boat_death_3){instance_create_layer(x,y,"instances",obj_boat_death_3)}
+
+}
+#endregion
+if life<=0 exit;
 #region mov
 var dash=keyboard_check_pressed(vk_shift)
 if !global.game_over{
@@ -32,9 +42,10 @@ motion_add(direction,-.09)
 }
 }
 
-
+if life>0{
 x=clamp(x,20,room_width)
 y=clamp(y,20,room_height)
+}
 speed=clamp(speed,-.75,2.75)
 
 

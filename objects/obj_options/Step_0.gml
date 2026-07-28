@@ -1,4 +1,7 @@
 //if keyboard_check_pressed(vk_anykey){room_goto(map)}
+x=lerp(x,xx,.08);
+image_xscale=lerp(image_xscale,scalex,.1);
+image_yscale=lerp(image_yscale,scaley,.1);
 
 if position_meeting(mouse_x,mouse_y,object_index){
 
@@ -20,7 +23,8 @@ with obj_ui_options{destroy=true}
 }else{play_anim=false; play_audio=false;}
 
 if play_anim{
-	
+	scalex=2.266939*1.1;
+scaley=2.091706*1.1;
 	if image_index<5
 	{
 	image_index+=.4;
@@ -29,7 +33,8 @@ if play_anim{
 	}
 	
 }else{
-	
+	scalex=2.266939;
+scaley=2.091706;
 	image_index=0;
 	
 }

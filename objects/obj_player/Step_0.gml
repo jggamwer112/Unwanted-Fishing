@@ -216,7 +216,7 @@ if estado_atual=estados.atacando_m1{
 	
 	////RESTO DO CÓDIGO EM TÉRMINO DE ANIMAÇÃO!!
 	break;
-	
+	skeleton_animation_get()
 	case 1:
 	stun=true;
 	sprite_index=spr_player_m1_combo_2;
@@ -226,7 +226,31 @@ if estado_atual=estados.atacando_m1{
 	hitbox_create=true;
 	}
 	break;
+	case 2:
+	stun=true;
+	sprite_index=spr_player_m1_combo_3;
+	if image_index>1{
+	if !hitbox_create{
 		
+	instance_create_layer(_xx,y,"instances",obj_hitbox_m1_3)
+	hitbox_create=true;
+	}
+	}
+	break;
+		case 3:
+	stun=true;
+	sprite_index=spr_player_m1_combo_4;
+	if !hitbox_create{
+	if (image_index>=3 and image_index<4) or (image_index>=9 and image_index<10){
+		if !instance_exists(obj_hitbox_m1_4){
+	instance_create_layer(_xx,y,"instances",obj_hitbox_m1_4)
+		}
+	}
+	if image_index>=10{
+	hitbox_create=true;
+	}
+	}
+	break;
 	}
 	
 }

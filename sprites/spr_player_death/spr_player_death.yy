@@ -33,8 +33,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Idle_anims",
-    "path":"folders/Game/sprites/Others_maps/Player/Idle_anims.yy",
+    "name":"Player",
+    "path":"folders/Game/sprites/Others_maps/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

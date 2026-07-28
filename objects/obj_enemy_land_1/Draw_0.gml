@@ -7,6 +7,7 @@ draw_set_colour(c_black)
 draw_circle(x,y,range,true);
 draw_set_colour(-1)
 draw_set_colour(c_red)
+draw_text(x,y,life)
 draw_circle(x,y,range_atk,true);
 draw_set_colour(-1)
 /////finisher

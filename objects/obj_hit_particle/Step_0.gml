@@ -1,3 +1,4 @@
+
 ///direção
 
 //if dir!=0 and spd!=0{

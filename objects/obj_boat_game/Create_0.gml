@@ -19,3 +19,5 @@ afterimage=false;
 alpha_aftimg=.8;
 //score
 score=0;
+
+death=false;

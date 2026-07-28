@@ -36,50 +36,96 @@ if !alarm[1]{alarm[1]=stun_time;}
 
 #endregion
 #region///atacando
-if instance_exists(target){
-if !take_dmg{
-if distance_to_object(target)<=range_atk and can_atk
-{
-	image_index=0;
-	sprite_index=spr_enemy_land_1_atk; 
-	stun=true;
-	stun_time=35;
-	can_atk=false;
+////checando se o player está no range
+if instance_exists(obj_player) and can_atk{
+if distance_to_point(obj_player.x,obj_player.y)<range_atk{
+
+can_atk=false;
+attacking=true;
+image_index=0;
+sprite_index=spr_enemy_land_1_atk
+}
+}
+if !stun_by_atk{
+
+if attacking{
+	
+stun=true;	
+if !instance_exists(obj_enemy_hitbox_attack){
+	if (sprite_index=spr_enemy_land_1_atk) and (image_index>6 and image_index<9){
+	var _xx=x-52*image_xscale;
+var inst=instance_create_depth(_xx,y,depth-2,obj_enemy_hitbox_attack)
+inst.xx=x
+inst.yy=y
+show_debug_message("FAZENDO AGORA = ATACANDO")
+attacking=false;
+if !alarm[0]{alarm[0]=atk_cd}
+show_debug_message("ALARM[0] INICIADO PELO STEP")
 	}
-}
-if 	sprite_index=spr_enemy_land_1_atk{
-
-if image_index=4{atk=true}
-
+	
 }
 
-if atk=true and visible{
-	//stun=true;
-	//stun_time=35;
-var _xx=x-52*image_xscale;
-if !take_dmg{
-var _hitbox=instance_create_depth(_xx,y,depth-1,obj_enemy_hitbox_attack);	
-if take_dmg{_hitbox.damage=0;}
-_hitbox.xx=x;
-_hitbox.yy=y;
-
-}
-atk=false;
-
-}else{
-if can_atk=false{if !alarm[0]{alarm[0]=atk_time;}}
-
+//show_debug_message("FAZENDO AGORA = ATACANDO")
+//attacking=false;
+//if !alarm[0]{alarm[0]=atk_cd}
+//show_debug_message("ALARM[0] INICIADO PELO STEP")
 }
 
-}
+
+}else if stun_by_atk{
+	attacking=false; 
+	show_debug_message("FAZENDO AGORA = INTERROMPIDO") 
+	show_debug_message("TOLERÂNCIA Á GOLPES: " + string(resistence));
+	if resistence>0{
+	resistence-=.08;
+	}
+	if !alarm[1]{alarm[1]=stun_time}
+	}
+//show_debug_log(true);
+
+
+//if 	sprite_index=spr_enemy_land_1_atk{
+
+//if image_index=4{atk=true}
+
+//}
+
+//if atk=true and visible{
+//	//stun=true;
+//	//stun_time=35;
+//var _xx=x-52*image_xscale;
+//if !take_dmg{
+//var _hitbox=instance_create_depth(_xx,y,depth-1,obj_enemy_hitbox_attack);	
+//if take_dmg{_hitbox.damage=0;}
+//_hitbox.xx=x;
+//_hitbox.yy=y;
+
+//}
+//atk=false;
+
+//}else{
+//if can_atk=false{if !alarm[0]{alarm[0]=atk_time;}}
+
+//}
+
+
 #endregion
 #endregion
 #region///tomando dano
 if place_meeting(x,y,obj_hitbox_m1){take_dmg=true; dmg_taken=obj_hitbox_m1.dmg}
 if place_meeting(x,y,obj_hitbox_m1_2){take_dmg=true; dmg_taken=obj_hitbox_m1_2.dmg}
+if place_meeting(x,y,obj_hitbox_m1_3){take_dmg=true; dmg_taken=obj_hitbox_m1_3.dmg}
+if place_meeting(x,y,obj_hitbox_m1_4){take_dmg=true; dmg_taken=obj_hitbox_m1_4.dmg}
 
 if take_dmg and visible{
-
+	if resistence>0{
+stun_by_atk=true;
+	}else{
+		stun_by_atk=false; 
+		show_debug_message("RESISTÊNCIA ATIVADA") 
+		
+		if !alarm[2]{alarm[2]=resistence_time}
+		}
 stun=true;
 life-=dmg_taken;
 fin_charge++;
@@ -90,7 +136,7 @@ randomise();
 ///efeitos de hit
 color_effect=true;
 ang_effect=true;
-hitstop(120);
+//hitstop(120);
 #region part-1
 if image_xscale>0{
 var part1=instance_create_depth(x,y,depth-1,obj_hit_particle);
