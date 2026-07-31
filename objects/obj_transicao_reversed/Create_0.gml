@@ -1,3 +1,4 @@
+depth=-5;
 image_xscale=30;
 image_yscale=30;
 

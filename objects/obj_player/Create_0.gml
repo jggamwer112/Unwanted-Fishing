@@ -1,3 +1,4 @@
+depth=0;
 life=100;
 die=false;
 take_dmg=false

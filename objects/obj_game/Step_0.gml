@@ -1,13 +1,6 @@
 inv_index=clamp(inv_index,0,2)
 if room!=map or instance_exists(obj_transicao){open_inv=false; inv_index=0;}
-if fullscreen{
-window_set_fullscreen(true);	
-	
-}else{
-	
-	window_set_fullscreen(false);	
-	
-}
+
 	
 	
 	

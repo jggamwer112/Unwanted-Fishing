@@ -1,39 +1,28 @@
-if global.pause exit;
+//if global.pause exit;
 #region //IA
 #region////Seguindo
-//var _col=place_meeting(x+speed,y,obj_col);
-if instance_exists(target){
+	
+if distance_to_object(target)<range{
 
-if distance_to_object(target)<=range{
 follow=true;
-}else{
-	
-follow=false;
 
-}
-}
+}else{ if !alarm[4]{alarm[4]=follow_time;}}
+	if follow{
+
+	target_x=target.x	
+target_y=target.y	
+	}else{
+		
+	if !alarm[3]{alarm[3]=rand_mov_time;}	
+	}
+	
+var _hor=clamp(target_x-x,-1,1);
+var _ver=clamp(target_y-y,-1,1);
+var mov_spd=spd/2;
+if follow{mov_spd=spd;}
 if !stun{
-if follow {
-speed=clamp(speed,0,spd);
-direction=point_direction(x,y,target.x,target.y);
-speed+=.03;
-
-}else{
-	speed=clamp(speed,0,2);
-if speed>0{
-speed-=.02;	
-
+move_and_collide(_hor*mov_spd,_ver*mov_spd,obj_col)
 }
-	
-}
-}else if stun{
-
-speed=0;
-if !alarm[1]{alarm[1]=stun_time;}
-//stun=false;
-}
-
-
 #endregion
 #region///atacando
 ////checando se o player está no range
@@ -215,8 +204,26 @@ visible=false;
 if visible=false and obj_player.finisher=false{instance_destroy();}
 
 #endregion
+#region///sprites
+
+if follow{
+
+image_blend=c_red	
+	
+}
+
+
+
+#endregion
+if follow{
 if instance_exists(target){
 if x<target.x{image_xscale=-1}
 if x>target.x{image_xscale=1}
 
+}
+}else{
+	
+if _hor>0{image_xscale=-1}
+if _hor<0{image_xscale=1}
+	
 }

@@ -24,8 +24,8 @@ gpu_set_blendenable(-1);
 gpu_set_fog(false,color,0,sprite_height);
 
 ///testes
-draw_set_colour(c_black)
-//draw_text(x,y-20,"COMBO_M1: " + string(m1_combo));
-//draw_text(x-15,y-45,"Life: " + string(life));
-draw_text(x-15,y-65,"Defense: " + string(defense_charge));
+//draw_set_colour(c_black)
+////draw_text(x,y-20,"COMBO_M1: " + string(m1_combo));
+////draw_text(x-15,y-45,"Life: " + string(life));
+//draw_text(x-15,y-65,"Defense: " + string(defense_charge));
 //draw_text(x,y-40,"SPD: " + string(spd));

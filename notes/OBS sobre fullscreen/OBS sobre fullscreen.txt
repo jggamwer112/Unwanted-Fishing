@@ -1,0 +1,9 @@
+Para evitar problemas de fullscreen no jogo, deve-se retirar as instâncias obj_game das fases, exceto a rm_menu
+que é onde ela é iniciada.
+
+isso acontece pois o objeto é persistente, e se colocarmos ele novamente em outras rooms, ele reseta suas
+variáveis.
+
+(isso também pode evitar problemas futuros)
+
+Entretanto, para efetuar testes rápidos diretamente na room, deve-se deixar o obj_game na room!!

@@ -121,6 +121,18 @@ if place_meeting(x,y+vspd,obj_col){
 vspd=0;
 
 }
+
+if place_meeting(x+hspd,y,obj_tree_land){
+	
+hspd=0;
+
+}
+
+if place_meeting(x,y+vspd,obj_tree_land){
+	
+vspd=0;
+
+}
 #endregion
 if !stun{
 x+=hspd;

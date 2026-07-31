@@ -1,5 +1,6 @@
 life=3;
 dmg_taken=0;///dano tomado
+///sprites
 last_sprite=spr_enemy_land_1;
 ///damage
 take_dmg=false;
@@ -16,11 +17,15 @@ can_fin=false;
 
 //////IA
 target=obj_player;
+target_x=x;
+target_y=y;
 follow=false;
-range=90;
+follow_time=60; ///quanto tempo o inimigo continua a seguir o player mesmo depois que sai do range
+range=90; ///campo em que o player deve entrar para que o inimigo ande atrás dele
 spd=1.21;
-stun=false;
-stun_time=60;
+///movendo sem perseguir
+rand_mov_time=60*5;///tempo que se move aleatóriamente quando não persegue o player
+alarm[3]=rand_mov_time;
 //atk
 range_atk=35; ///range que ativa o ataque
 attacking=false;//indica se está atacando
