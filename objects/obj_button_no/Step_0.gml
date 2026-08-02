@@ -5,7 +5,7 @@ if position_meeting(mouse_x,mouse_y,object_index){
 play_anim=true;	
 if play_audio=false{
 
-audio_play_sound(snd_select_2,0,false);
+audio_play_sound(snd_select,0,false);
 play_audio=true;
 }
 	

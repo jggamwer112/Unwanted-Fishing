@@ -25,14 +25,18 @@ var _D=keyboard_check(ord("D"))
 var _S=keyboard_check(ord("S"))
 var _W=keyboard_check(ord("W"))
 
+var _rw=keyboard_check_released(ord("W"))
+var _rs=keyboard_check_released(ord("S"))
+var _ra=keyboard_check_released(ord("A"))
+var _rd=keyboard_check_released(ord("D"))
 
-if keyboard_check(vk_left) or _A{image_angle+=1.75 motion_add(image_angle,.05)	}
-if keyboard_check(vk_right) or _D{image_angle-=1.75 motion_add(image_angle,.05)	}
+if keyboard_check(vk_left) or _A{image_angle+=1.75 motion_add(image_angle,.05)	mov_sound=true}
+if keyboard_check(vk_right) or _D{image_angle-=1.75 motion_add(image_angle,.05)	mov_sound=true}
 
 if keyboard_check(vk_up) or _W{
 	
 motion_add(image_angle,.062)	
-	
+	mov_sound=true;
 }
 if (keyboard_check(vk_down) or _S){
 
@@ -48,6 +52,19 @@ y=clamp(y,20,room_height)
 }
 speed=clamp(speed,-.75,2.75)
 
+if _rw or _rs or _rd or _ra{mov_sound=false;}
+
+
+if mov_sound{
+	
+if !audio_is_playing(snd_move_ocean)	{
+	
+audio_play_sound(snd_move_ocean,0,true);	
+	
+}
+	
+	
+}else{audio_stop_sound(snd_move_ocean)}
 
 //if dash{speed=36.75 afterimage=true;}
 #endregion

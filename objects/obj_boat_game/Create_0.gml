@@ -21,3 +21,5 @@ alpha_aftimg=.8;
 score=0;
 
 death=false;
+///sound
+mov_sound=false;

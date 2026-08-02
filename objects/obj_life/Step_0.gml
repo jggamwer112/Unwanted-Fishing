@@ -12,6 +12,7 @@ if life<3 and !global.game_over{life++;}
 	
 	
 }
+audio_play_sound(snd_heal_ocean,1,false)
 instance_destroy();
 
 }

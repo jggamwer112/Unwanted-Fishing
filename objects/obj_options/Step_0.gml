@@ -9,6 +9,7 @@ if play_audio=false{audio_play_sound(snd_select,0,false); play_audio=true;}
 
 play_anim=true;
 if mouse_check_button_pressed(mb_left){
+	audio_play_sound(snd_select_2,2,false)
 if !instance_exists(obj_ui_options){
 
 	var op=instance_create_layer(room_width/2,room_height/2,"UI",obj_ui_options);
