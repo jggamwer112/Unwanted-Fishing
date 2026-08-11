@@ -17,3 +17,6 @@ instance_create_depth(x,y,depth-1,obj_player);
 if instance_exists(obj_boat_destiny){
 seq=layer_sequence_create("instances",obj_boat_destiny.x,obj_boat_destiny.y,sq_boat_land);
 }
+
+col=noone;
+finish_game=false;

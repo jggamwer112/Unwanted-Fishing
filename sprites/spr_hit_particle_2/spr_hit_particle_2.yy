@@ -25,6 +25,7 @@
   "height":32,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"c3e5ed73-c0b2-4c0c-a0c5-7f839c3ebcd6","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"c3e5ed73-c0b2-4c0c-a0c5-7f839c3ebcd6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"eadaf6d8-f0ae-40a0-9ac6-5b454fb5e461","blendMode":0,"displayName":"default","isLocked":false,"name":"eadaf6d8-f0ae-40a0-9ac6-5b454fb5e461","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_hit_particle_2",

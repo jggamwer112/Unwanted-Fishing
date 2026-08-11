@@ -1,4 +1,4 @@
-
+image_angle=lerp(image_angle,0,.1)
 
 image_xscale=clamp(image_xscale,0,200);
 image_xscale-=.08

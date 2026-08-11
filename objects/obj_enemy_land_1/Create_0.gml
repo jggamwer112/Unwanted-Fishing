@@ -1,5 +1,10 @@
-life=3;
+depth=0;
+life=58;
 dmg_taken=0;///dano tomado
+///barra de vida
+
+///morrendo
+death=false;
 ///sprites
 last_sprite=spr_enemy_land_1;
 ///damage
@@ -34,6 +39,6 @@ atk_cd=90// cooldown do atk
 stun=false //indica se está stunnado
 stun_by_atk=false; ///indica se ele está paralizado pois seu ataque foi interrompido
 stun_time=90//tempo do stun
-default_resistence=50;
+default_resistence=15;
 resistence=default_resistence; ////quando essa variável chega a 0, o inimigo fica "imune" a qualquer stun por ataque
-resistence_time=45/// tempo que a resistencia dura
+resistence_time=55/// tempo que a resistencia dura

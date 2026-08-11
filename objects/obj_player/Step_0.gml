@@ -1,5 +1,18 @@
 //x=clamp(x,0,room_width);
 //y=clamp(y,0,room_height);
+
+#region//gamepad_inputts
+var _device=0;
+var connected=gamepad_is_connected(_device);
+var gm_up=gamepad_axis_value(_device,gp_axislv)
+var gm_down=gamepad_axis_value(_device,gp_axislh)
+var gm_run=gamepad_button_check(_device,gp_shoulderrb)
+var gm_atk1=gamepad_button_check_pressed(_device,gp_face3)
+var gm_defense=gamepad_button_check(_device,gp_shoulderr)
+var is_moving_pad = gm_up or gm_down
+gamepad_set_axis_deadzone(_device, 0.05)
+#endregion
+
 #region intro andando
 alpha_vfx=clamp(alpha_vfx,0,1);
 alpha_vfx=lerp(alpha_vfx,0,.08);
@@ -38,12 +51,22 @@ var _S=keyboard_check(ord("S"));
 var _A=keyboard_check(ord("A"));
 var _D=keyboard_check(ord("D"));
 var run=keyboard_check(vk_shift);
+var is_moving = _W or _S or _A or _D
 
 ///Velocidades & Movimentos horizontais e verticais
 var v_mov=_S-_W;
 var h_mov=_D-_A;
 var hspd=0;
 var vspd=0;
+if connected{
+v_mov=gm_up*spd
+h_mov=gm_down*spd
+}else{
+ v_mov=_S-_W;
+ h_mov=_D-_A;
+
+}
+
 //var diagonal_spd=0
 
 ////mudando estado para walk
@@ -71,36 +94,57 @@ hspd=h_mov*spd;
 vspd=v_mov*spd;	
 
 }
+if estado_atual!=estados.atacando_m1{
+	diagonal_spd=1
+if !connected{if (h_mov<0 or h_mov>0) or (v_mov<0 or v_mov>0){estado_atual=estados.andar;}}
+if !connected{
+if h_mov=0 and v_mov=0{estado_atual=estados.idle;}
+}
+if connected{
+if sign(gm_down)!=0 or sign(gm_up)!=0{estado_atual=estados.andar}
 
+}
+if connected{
+if gm_down=0 and gm_up=0{estado_atual=estados.idle;}
+}
+}
+
+//show_debug_message(v_mov)
+//show_debug_message(h_mov)
 ////Mudando a animação e o estado de andar
-if estado_atual=estados.idle{
-if h_mov!=0 or v_mov!=0{
+//if estado_atual=estados.idle{
+//if h_mov!=0 or v_mov!=0{
 
-//if !run{
-//estado_atual=estados.andar;
+////if !run{
+////estado_atual=estados.andar;
+////}
+
+//}else{
+
+////if sprite_index=spr_player_walk{sprite_index=spr_player_walk_to_idle}
+
+//}
 //}
 
-}else{
-
-//if sprite_index=spr_player_walk{sprite_index=spr_player_walk_to_idle}
-
-}
-}
-
 ////correndo
-if run and estado_atual=estados.andar{
+
+if (run or gm_run) and estado_atual=estados.andar{
 diagonal_spd=1.85
 
 estado_atual=estados.correr;
 
-}else if !run{
+} 
+if estado_atual=estados.correr{
+if (!run and !gm_run) or (!is_moving and !is_moving_pad) {
+//show_debug_message(estado_atual)
+//diagonal_spd=1
+//if estado_atual!=estados.atacando_m1{
+//if !connected{if (h_mov<0 or h_mov>0) or (v_mov<0 or v_mov>0){estado_atual=estados.andar;}}
+//if connected{show_debug_message(h_mov)if (gm_down) or (gm_up){estado_atual=estados.andar;}}
+//if h_mov=0 and v_mov=0{estado_atual=estados.idle;}	
+//}
 
-diagonal_spd=1
-if estado_atual!=estados.atacando_m1{
-if h_mov!=0 or v_mov!=0{estado_atual=estados.andar;}	
-if h_mov=0 and v_mov=0{estado_atual=estados.idle;}	
 }
-
 }
 
 if estado_atual=estados.correr{
@@ -140,11 +184,11 @@ y+=vspd;
 }
 
 if !finisher{
-if h_mov>0{
+if (h_mov>0) or gm_down>0{
 	
 	image_xscale=1;
 	
-	}else if  h_mov<0
+	}else if  h_mov<0 or gm_down<0
 	{
 		image_xscale=-1;
 	
@@ -181,9 +225,9 @@ var attack=mouse_check_button_pressed(mb_left);
 var attack_2=mouse_check_button_pressed(mb_right);
 var states_can_attack=estados.andar or estados.idle;
 if defense_charge>0{
-if defense and states_can_attack{
+if (defense or gm_defense) and states_can_attack{
 estado_atual=estados.defendendo
-}else if !defense{
+}else if !defense and !gm_defense{
 	
 if estado_atual=estados.defendendo{
 image_blend=c_white;	
@@ -192,7 +236,7 @@ estado_atual=estados.idle;
 }
 }
 
-if attack and m1_attack{
+if (attack or gm_atk1) and m1_attack{
 m1_attack=false;
 image_index=0; //isso resolve o problema da animação pulando frames
 estado_atual=estados.atacando_m1
@@ -293,13 +337,32 @@ break;
 case estados.andar:
 
 sprite_index=spr_player_walk;
+if image_index>=3 and image_index<5{
+
+if !audio_is_playing(snd_walk_land){
+	
+var _pitch=random_range(1,1.25);
+audio_play_sound(snd_walk_land,3,false,1,0);
+randomise();
+}
+	
+}
 
 break;
 
 case estados.correr:
 
-sprite_index=spr_player_run;
+sprite_index=spr_player_run_1;
+if image_index>=1 and image_index<6{
 
+if !audio_is_playing(snd_run){
+	
+var _pitch=random_range(1,1.25);
+audio_play_sound(snd_run,3,false,1,00);
+randomise();
+}
+	
+}
 break;
 
 case estados.finisher:

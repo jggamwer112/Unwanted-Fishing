@@ -33,7 +33,7 @@ finisher,
 
 
 }
-estado_atual=estados.andar;
+estado_atual=estados.idle;
 
 ///VFX
 alpha_set=false;

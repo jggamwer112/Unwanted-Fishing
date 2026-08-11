@@ -20,16 +20,36 @@ obj_cam.targ=obj_player;
 	}
 }
 if intro exit;
-var colision=noone;
+//var colision=noone;
 
 if instance_exists(obj_player){
 
 if obj_player.move_anim=false{
 
 if create=false{
-colision=instance_create_layer(x,y,"Col",obj_col);	
+col=instance_create_layer(x,y,"Col",obj_col);	
 	create=true
 }
 }
 
+}
+
+if col!=noone{
+
+if instance_exists(obj_land_game){
+	
+if obj_land_game.can_exit{
+	
+instance_destroy(col)	
+	
+}
+	
+}
+	
+}
+
+if place_meeting(x,y,obj_player) and finish_game{
+	
+room_goto(map);	
+	
 }

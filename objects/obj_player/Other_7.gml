@@ -2,7 +2,7 @@ if move_anim=false and sprite_index=spr_player_walk{sprite_index=spr_player_idle
 if sprite_index=spr_player_walk_to_idle{sprite_index=spr_player_idle; estado_atual=estados.idle;}
 ///run
 
-if sprite_index=spr_player_run and estado_atual!=estados.correr{sprite_index=spr_player_idle; estado_atual=estados.idle;}
+if sprite_index=spr_player_run_1 and estado_atual!=estados.correr{sprite_index=spr_player_idle; estado_atual=estados.idle;}
 ///Idle
 if sprite_index=spr_player_idle_2{sprite_index=spr_player_idle; alarm[0]=60*5;}
 

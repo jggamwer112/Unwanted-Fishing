@@ -25,5 +25,9 @@ case rm_l_simple_place:
 audio_play_sound(snd_land_1,2,true);
 break;
 	
+case rm_shop:
+
+audio_play_sound(snd_shop,2,true);
+break;
 	
 }

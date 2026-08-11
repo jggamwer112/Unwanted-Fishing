@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.996916,
+  "duration":17.767756,
   "exportDir":"",
   "name":"snd_move_ocean",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_move_ocean.wav",
-  "volume":0.16,
+  "soundFile":"snd_move_ocean.mp3",
+  "volume":0.32,
 }

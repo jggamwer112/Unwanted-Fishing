@@ -2,8 +2,6 @@ inv_index=clamp(inv_index,0,2)
 if room!=map or instance_exists(obj_transicao){open_inv=false; inv_index=0;}
 
 	
-	
-	
 //sfx
 if room=rm_game_over{
 if !audio_is_playing(snd_death_waiting_2){

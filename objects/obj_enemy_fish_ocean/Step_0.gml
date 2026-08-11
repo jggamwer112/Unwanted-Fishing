@@ -18,7 +18,15 @@ speed=spd;
 	image_angle=direction;
 
 }
+if sprite_index=spr_enemy_fish_ocean_death{
 
+if audio_play=false{
+	
+audio_play_sound(snd_death_fish_ocean,2,false)	
+audio_play=true;
+}
+
+}
 if place_meeting(x,y,obj_boat_game){
 	
 hit();

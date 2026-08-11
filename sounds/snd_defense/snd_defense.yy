@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.1963492,
+  "duration":0.18469387,
   "exportDir":"",
   "name":"snd_defense",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_defense.wav",
-  "volume":1.0,
+  "volume":0.75,
 }

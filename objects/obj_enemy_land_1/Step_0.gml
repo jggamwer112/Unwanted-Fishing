@@ -1,4 +1,35 @@
 //if global.pause exit;
+if life<=0 and !death{
+var _dthpart=instance_create_depth(x,y,depth-1,obj_death_particle);
+_dthpart.x=x
+_dthpart.y=y
+death=true
+}
+if death{
+	sprite_index=spr_enemy_land_1_death;
+	if !alarm[5]{alarm[5]=30;}
+	image_angle=0;
+	if image_xscale>0{
+if spd>0{
+	spd=clamp(spd,0,2)
+speed=spd
+}
+	}else{
+	if spd>0{
+		spd=clamp(spd,-2,0)
+speed=-spd
+}	
+		
+	}
+	if spd!=0{
+spd-=.01
+	}
+	
+//image_alpha-=.02
+}
+//if image_alpha<=0{instance_destroy()}
+if life<=0 exit;
+
 #region //IA
 #region////Seguindo
 	
@@ -106,15 +137,10 @@ if place_meeting(x,y,obj_hitbox_m1_2){take_dmg=true; dmg_taken=obj_hitbox_m1_2.d
 if place_meeting(x,y,obj_hitbox_m1_3){take_dmg=true; dmg_taken=obj_hitbox_m1_3.dmg}
 if place_meeting(x,y,obj_hitbox_m1_4){take_dmg=true; dmg_taken=obj_hitbox_m1_4.dmg}
 
-if take_dmg and visible{
-	if resistence>0{
+if take_dmg and visible and resistence>0{
+
 stun_by_atk=true;
-	}else{
-		stun_by_atk=false; 
-		show_debug_message("RESISTÊNCIA ATIVADA") 
-		
-		if !alarm[2]{alarm[2]=resistence_time}
-		}
+
 stun=true;
 life-=dmg_taken;
 fin_charge++;
@@ -157,6 +183,16 @@ cut.y=y
 #endregion
 
 take_dmg=false;	
+}else if resistence<=0{
+	
+
+		stun_by_atk=false; 
+		take_dmg=false;
+		show_debug_message("RESISTÊNCIA ATIVADA") 
+		if life<life-dmg_taken{life-=dmg_taken;}
+		if !alarm[2]{alarm[2]=resistence_time}
+
+	
 }
 #endregion
 #region///hit effects
@@ -206,11 +242,11 @@ if visible=false and obj_player.finisher=false{instance_destroy();}
 #endregion
 #region///sprites
 
-if follow{
+//if follow{
 
-image_blend=c_red	
+//image_blend=c_red	
 	
-}
+//}
 
 
 

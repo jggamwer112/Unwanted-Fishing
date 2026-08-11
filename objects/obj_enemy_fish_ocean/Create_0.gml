@@ -11,3 +11,5 @@ die_time=30;
 
 ///drops
 drop_items=false;
+
+audio_play=false;
