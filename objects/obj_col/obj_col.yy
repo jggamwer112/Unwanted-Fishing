@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"obj_col",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_col",
   "overriddenProperties":[],
@@ -26,7 +28,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
     "name":"spr_col",
     "path":"sprites/spr_col/spr_col.yy",

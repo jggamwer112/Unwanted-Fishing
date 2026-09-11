@@ -41,7 +41,7 @@ if instance_exists(obj_land_game){
 if obj_land_game.can_exit{
 	
 instance_destroy(col)	
-	
+	finish_game=true;
 }
 	
 }

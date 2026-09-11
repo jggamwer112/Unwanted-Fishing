@@ -31,8 +31,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Player",
-    "path":"folders/Game/sprites/Others_maps/Player.yy",
+    "name":"Running",
+    "path":"folders/Game/sprites/Others_maps/Player/Running.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

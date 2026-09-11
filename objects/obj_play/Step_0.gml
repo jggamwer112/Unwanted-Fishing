@@ -20,18 +20,22 @@ _inst.vel_scale=.27
 }else{play_anim=false; play_audio=false;}
 
 if play_anim{
-		scalex=2.266939*1.1;
-scaley=2.091706*1.1;
+		scalex=scalex_def*1.1;
+scaley=scaley_def*1.1;
 	if image_index<5
 	{
 	image_index+=.4;
 	}else{
 	image_index=5;	
 	}
+	if xx=xx_def{
+	xx=xx_click
+	}
 	
 }else{
-		scalex=2.266939;
-scaley=2.091706;
+		scalex=scalex_def;
+scaley=scaley_def;
+xx=lerp(xx,xx_def,.8);
 	image_index=0;
 	
 }

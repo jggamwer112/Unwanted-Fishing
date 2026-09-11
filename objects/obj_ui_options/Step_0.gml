@@ -17,6 +17,16 @@ inst1.image_alpha=image_alpha-.3;
 }
 
 if image_alpha<=0.12 and destroy{instance_destroy() instance_destroy(obj_options_button_1);}
+if ui_index<2{
+	
+ui_index+=.3;	
+}
+if !destroy{
+	
+ui_scale=lerp(ui_scale,ui_scale_def,.1)	
+}else{
+	ui_alpha-=.04
+ui_scale=lerp(ui_scale,0,.1)	
+}
 
 if destroy exit;
-

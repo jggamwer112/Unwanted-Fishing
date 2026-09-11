@@ -20,8 +20,8 @@ if spd<0{spd+=downgrade; spd=clamp(spd,-100,0);}
 }
 
 if image_xscale<=0{instance_destroy();}
-show_debug_message(image_xscale)
-show_debug_message("Existe")
+//show_debug_message(image_xscale)
+//show_debug_message("Existe")
 //if spd=0{
 //vsp=grv
 //y+=vsp

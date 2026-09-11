@@ -8,34 +8,38 @@ if position_meeting(mouse_x,mouse_y,object_index){
 if play_audio=false{audio_play_sound(snd_select,0,false); play_audio=true;}
 
 play_anim=true;
-if mouse_check_button_pressed(mb_left){
-	audio_play_sound(snd_select_2,2,false)
+if mouse_check_button_pressed(mb_left) and !instance_exists(obj_transicao){
 if !instance_exists(obj_ui_options){
-
-	var op=instance_create_layer(room_width/2,room_height/2,"UI",obj_ui_options);
-	
+var _inst=instance_create_layer(room_width/2,room_height/2,"transicao",obj_ui_options)
 }else{
-
-with obj_ui_options{destroy=true}
 	
+with obj_ui_options{
+	
+destroy=true;	
 }
+}
+
 }
 
 }else{play_anim=false; play_audio=false;}
 
 if play_anim{
-	scalex=2.266939*1.1;
-scaley=2.091706*1.1;
+		scalex=scalex_def*1.1;
+scaley=scaley_def*1.1;
 	if image_index<5
 	{
 	image_index+=.4;
 	}else{
 	image_index=5;	
 	}
+	if xx=xx_def{
+	xx=xx_click
+	}
 	
 }else{
-	scalex=2.266939;
-scaley=2.091706;
+		scalex=scalex_def;
+scaley=scaley_def;
+xx=lerp(xx,xx_def,.8);
 	image_index=0;
 	
 }

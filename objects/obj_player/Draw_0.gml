@@ -23,6 +23,13 @@ draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_ang
 gpu_set_blendenable(-1);
 gpu_set_fog(false,color,0,sprite_height);
 
+if dodging{
+	
+draw_sprite_ext(spr_player_idle,0,x,y,1.15,1.15,0,c_white,dodge_alpha)	
+	
+}
+
+
 ///testes
 //draw_set_colour(c_black)
 ////draw_text(x,y-20,"COMBO_M1: " + string(m1_combo));

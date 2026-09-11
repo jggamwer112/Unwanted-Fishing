@@ -20,3 +20,4 @@ seq=layer_sequence_create("instances",obj_boat_destiny.x,obj_boat_destiny.y,sq_b
 
 col=noone;
 finish_game=false;
+frame=0;

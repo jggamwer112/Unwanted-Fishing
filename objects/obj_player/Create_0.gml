@@ -1,4 +1,7 @@
+instance_create_layer(x,y,"instances",obj_player_follow)
 depth=0;
+invincible=false;
+invincible_time=60;
 life=100;
 die=false;
 take_dmg=false
@@ -30,7 +33,8 @@ atacando_m1,
 atacando_m2,
 defendendo,
 finisher,
-
+desviar,
+rolar
 
 }
 estado_atual=estados.idle;
@@ -59,3 +63,17 @@ anzol
 }
 postura_atual=posturas.vara;
 finisher=false; //determina se o player está em finalização
+
+///desviar e rolar
+pressed=0;
+can_press=true;
+dodging=false;
+dodge_def=50
+dodge_time=dodge_def;
+dodge_alpha=.42;
+
+rolling=false;
+rol_def=14;
+rol_time=rol_def;
+rol_length=8.25;
+rol_acc=0;

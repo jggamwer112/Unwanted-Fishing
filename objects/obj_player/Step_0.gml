@@ -94,7 +94,9 @@ hspd=h_mov*spd;
 vspd=v_mov*spd;	
 
 }
-if estado_atual!=estados.atacando_m1{
+if estado_atual!=estados.atacando_m1 and estado_atual!=estados.desviar and estado_atual!=estados.rolar{
+	if estado_atual=estados.rolar exit;
+	if estado_atual=estados.desviar exit;
 	diagonal_spd=1
 if !connected{if (h_mov<0 or h_mov>0) or (v_mov<0 or v_mov>0){estado_atual=estados.andar;}}
 if !connected{
@@ -128,7 +130,7 @@ if gm_down=0 and gm_up=0{estado_atual=estados.idle;}
 
 ////correndo
 
-if (run or gm_run) and estado_atual=estados.andar{
+if (run or gm_run) and estado_atual=estados.andar {
 diagonal_spd=1.85
 
 estado_atual=estados.correr;
@@ -217,13 +219,24 @@ alpha_vfx=1;
 alpha_set=false;
 }
 
+if dodging{
+	
+dodge_alpha-=.04;
+
+if dodge_alpha<=0{dodging=false;}
+	
+}else{dodge_alpha=.42}
+
 #endregion
 
 #region///combate
+var dodge=keyboard_check_pressed(ord("Q"))
+
 var defense=keyboard_check(ord("F"));
 var attack=mouse_check_button_pressed(mb_left);
 var attack_2=mouse_check_button_pressed(mb_right);
 var states_can_attack=estados.andar or estados.idle;
+#region defesa
 if defense_charge>0{
 if (defense or gm_defense) and states_can_attack{
 estado_atual=estados.defendendo
@@ -235,20 +248,115 @@ estado_atual=estados.idle;
 }
 }
 }
-
+#endregion
+#region iniciando m1
 if (attack or gm_atk1) and m1_attack{
 m1_attack=false;
 image_index=0; //isso resolve o problema da animação pulando frames
 estado_atual=estados.atacando_m1
 }
+#endregion
+#region iniciando desvio / rolar
 
+if pressed=0{image_blend=c_white}
+if pressed=1{image_blend=c_blue}
+if pressed=2{image_blend=c_red}
+
+if dodge and can_press{
+image_index=0;
+if pressed=0{
+pressed=1
+}else if pressed=1{
+	
+pressed=2;	
+}
+//show_message(pressed)
+	can_press=false;
+}
+
+switch(pressed){
+
+case 1:
+estado_atual=estados.desviar
+break;
+
+case 2:
+estado_atual=estados.rolar
+break;
+
+}
+
+if keyboard_check_released(ord("Q")){can_press=true;}
+
+
+
+
+#endregion
 
 switch(estado_atual){
 
 case estados.defendendo:	
 	image_blend=c_blue;
 	break;
+
+case estados.desviar:
+dodge_time--;
+if dodge_time>0{
+	var col=place_meeting(x,y,obj_enemy_hitbox_attack);
+	sprite_index=spr_player_dodge;
+	if col{
+	invincible=true;
+	if !alarm[3]{
+	alarm[3]=invincible_time;	
+	}
 	
+	dodging=true;
+	//show_message("Dodged")
+	pressed=0;
+	rol_acc=0;
+dodge_time=dodge_def;
+rol_time=rol_def;
+//dodging=false;
+	}
+	
+//show_message("Dodge acontecendo")		
+}else{
+pressed=0;
+estado_atual=estados.idle;
+dodge_time=dodge_def;
+rol_time=rol_def; ///as vezes o tempo de rolar pode ser interrompido, por isso reseto
+//show_message("Cabo o dodge")	
+}
+//show_message("Desviando")
+
+break;
+
+case estados.rolar:
+sprite_index=spr_player_roll;
+rol_acc=clamp(rol_acc,0,1);
+rol_time--;;
+invincible=true;
+	if !alarm[3]{
+	alarm[3]=invincible_time/2;	
+	}
+if rol_time>0{
+	rol_acc+=.08
+if _D{x+=rol_length*rol_acc;}
+if _A{x-=rol_length*rol_acc;}
+//if _D{x=lerp(x,rol_length,.1)}
+//if _A{x=lerp(x,rol_length,.1)}
+	
+}else{
+rol_acc=0;
+pressed=0;
+estado_atual=estados.idle;
+rol_time=rol_def;
+dodge_time=dodge_def; ///as vezes o tempo do dodge pode ser interrompido, por isso reseto
+//show_message("Cabo o Rol")	
+}
+
+break;
+
 }
 
 #region //m1 combo
@@ -272,7 +380,7 @@ if estado_atual=estados.atacando_m1{
 	
 	////RESTO DO CÓDIGO EM TÉRMINO DE ANIMAÇÃO!!
 	break;
-	skeleton_animation_get()
+	//skeleton_animation_get()
 	case 1:
 	stun=true;
 	sprite_index=spr_player_m1_combo_2;
@@ -375,7 +483,7 @@ break;
 #endregion
 
 #region ///Tomando dano
-if place_meeting(x,y,obj_enemy_hitbox_attack){ ////Colisão com o inimigo temporária, criar hitbox.
+if place_meeting(x,y,obj_enemy_hitbox_attack) and !invincible{ ////Colisão com o inimigo temporária, criar hitbox.
 	var dmg=obj_enemy_hitbox_attack.damage;
 	
 ////PARRY

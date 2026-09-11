@@ -39,9 +39,10 @@ follow=true;
 
 }else{ if !alarm[4]{alarm[4]=follow_time;}}
 	if follow{
-
-	target_x=target.x	
-target_y=target.y	
+//target_x=target.x
+//target_y=target.y
+target_x=lerp(target_x,(target.xprevious-40*target.image_xscale),.01)
+target_y=lerp(target_y,(target.yprevious),.01)
 	}else{
 		
 	if !alarm[3]{alarm[3]=rand_mov_time;}	
@@ -51,9 +52,11 @@ var _hor=clamp(target_x-x,-1,1);
 var _ver=clamp(target_y-y,-1,1);
 var mov_spd=spd/2;
 if follow{mov_spd=spd;}
+
 if !stun{
 move_and_collide(_hor*mov_spd,_ver*mov_spd,obj_col)
 }
+
 #endregion
 #region///atacando
 ////checando se o player está no range
@@ -70,17 +73,18 @@ if !stun_by_atk{
 
 if attacking{
 	
-stun=true;	
+//stun=true;	
 if !instance_exists(obj_enemy_hitbox_attack){
-	if (sprite_index=spr_enemy_land_1_atk) and (image_index>6 and image_index<9){
+	if (sprite_index=spr_enemy_land_1_atk) and (image_index>9 and image_index<12){
 	var _xx=x-52*image_xscale;
 var inst=instance_create_depth(_xx,y,depth-2,obj_enemy_hitbox_attack)
 inst.xx=x
 inst.yy=y
-show_debug_message("FAZENDO AGORA = ATACANDO")
+//show_debug_message("FAZENDO AGORA = ATACANDO")
 attacking=false;
 if !alarm[0]{alarm[0]=atk_cd}
-show_debug_message("ALARM[0] INICIADO PELO STEP")
+if !alarm[1]{alarm[1]=stun_time;}
+//show_debug_message("ALARM[0] INICIADO PELO STEP")
 	}
 	
 }
@@ -94,11 +98,11 @@ show_debug_message("ALARM[0] INICIADO PELO STEP")
 
 }else if stun_by_atk{
 	attacking=false; 
-	show_debug_message("FAZENDO AGORA = INTERROMPIDO") 
-	show_debug_message("TOLERÂNCIA Á GOLPES: " + string(resistence));
-	if resistence>0{
-	resistence-=.08;
-	}
+	//show_debug_message("FAZENDO AGORA = INTERROMPIDO") 
+	//show_debug_message("TOLERÂNCIA Á GOLPES: " + string(resistence));
+	//if resistence>0{
+	//resistence-=.08;
+	//}
 	if !alarm[1]{alarm[1]=stun_time}
 	}
 //show_debug_log(true);
@@ -132,15 +136,43 @@ show_debug_message("ALARM[0] INICIADO PELO STEP")
 #endregion
 #endregion
 #region///tomando dano
-if place_meeting(x,y,obj_hitbox_m1){take_dmg=true; dmg_taken=obj_hitbox_m1.dmg}
-if place_meeting(x,y,obj_hitbox_m1_2){take_dmg=true; dmg_taken=obj_hitbox_m1_2.dmg}
-if place_meeting(x,y,obj_hitbox_m1_3){take_dmg=true; dmg_taken=obj_hitbox_m1_3.dmg}
-if place_meeting(x,y,obj_hitbox_m1_4){take_dmg=true; dmg_taken=obj_hitbox_m1_4.dmg}
+if place_meeting(x,y,obj_hitbox_m1){
+take_dmg=true; 
+dmg_taken=obj_hitbox_m1.dmg
+knockback=true;
+knockback_intensity=random(6);
+randomise();
+}
+if place_meeting(x,y,obj_hitbox_m1_2){
+take_dmg=true; 
+dmg_taken=obj_hitbox_m1_2.dmg
+knockback=true;
+knockback_intensity=random(6);
+randomise();
+}
+if place_meeting(x,y,obj_hitbox_m1_3){
+take_dmg=true; 
+dmg_taken=obj_hitbox_m1_3.dmg
+knockback=true;
+knockback_intensity=random(6);
+randomise();
+}
+if place_meeting(x,y,obj_hitbox_m1_4){
+	take_dmg=true; 
+	dmg_taken=obj_hitbox_m1_4.dmg 
+	knockback=true;
+	knockback_intensity=28
+	}
+//show_debug_log(true);
+//show_debug_message("Contagem de STUN: " + string(stun_atk_count))
+//show_debug_message("Stun por atk: " + string(stun_by_atk))
+//show_debug_message("Stun : " + string(stun))
+if take_dmg and visible{
+if stun_atk_count<max_stun_by_atk{
+stun_atk_count++;
 
-if take_dmg and visible and resistence>0{
 
-stun_by_atk=true;
-
+}
 stun=true;
 life-=dmg_taken;
 fin_charge++;
@@ -183,30 +215,36 @@ cut.y=y
 #endregion
 
 take_dmg=false;	
-}else if resistence<=0{
+alarm[0]=45;
+}	
+//knockback
+
+///stun by atk
+if stun_atk_count>=max_stun_by_atk{
 	
-
-		stun_by_atk=false; 
-		take_dmg=false;
-		show_debug_message("RESISTÊNCIA ATIVADA") 
-		if life<life-dmg_taken{life-=dmg_taken;}
-		if !alarm[2]{alarm[2]=resistence_time}
-
+if !alarm[2]{alarm[2]=60}	
 	
 }
+
+		//stun_by_atk=false; 
+		//take_dmg=false;
+		//attacking=true;
+		//show_debug_message("RESISTÊNCIA ATIVADA") 
+		//if life<life-dmg_taken{life-=dmg_taken;}
+		//if !alarm[2]{alarm[2]=resistence_time}
 #endregion
 #region///hit effects
-if color_effect{
-	var col=#332C50
-color=merge_colour(col,c_white,color_ammount)
-color_ammount+=5;
-image_blend=color;
-if color_ammount>=100{color_effect=false;}
+//if color_effect{
+//	var col=c_red
+//color=merge_colour(col,c_white,color_ammount)
+//color_ammount+=5;
+//image_blend=color;
+//if color_ammount>=100{color_effect=false;}
 
-}else{
-image_blend=merge_colour(c_white,c_white,color_ammount)	
-color_ammount=0;
-}
+//}else{
+//image_blend=merge_colour(c_white,c_white,color_ammount)	
+//color_ammount=0;
+//}
 
 if ang_effect{
 

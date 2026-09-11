@@ -55,3 +55,6 @@ estado_atual=estados.idle;
 
 ///death
 if sprite_index=spr_player_death{global.game_over=true;}
+if sprite_index=spr_player_roll{sprite_index=spr_player_idle;}
+//dodge
+if sprite_index=spr_player_dodge{sprite_index=spr_player_idle estado_atual=estados.idle;}
