@@ -12,3 +12,5 @@ audio_play_sound(snd_death_waiting_2,2,false,1,0,pitch);
 }else{
 	audio_stop_sound(snd_death_waiting_2);
 }
+
+if open_inv{room_goto(inventory)}

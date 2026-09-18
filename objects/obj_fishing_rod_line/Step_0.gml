@@ -1,0 +1,1 @@
+if !instance_exists(obj_fishing_rod_inventory){instance_destroy()}

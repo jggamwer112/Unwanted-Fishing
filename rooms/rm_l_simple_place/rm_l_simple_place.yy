@@ -205,7 +205,7 @@
   "name":"rm_l_simple_place",
   "parent":{
     "name":"land",
-    "path":"folders/Game/Maps/land.yy",
+    "path":"folders/Maps/land.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

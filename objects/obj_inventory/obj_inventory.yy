@@ -10,8 +10,8 @@
   "name":"obj_inventory",
   "overriddenProperties":[],
   "parent":{
-    "name":"inventory",
-    "path":"folders/Map/objects/inventory.yy",
+    "name":"Objects",
+    "path":"folders/Game/Inventory/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

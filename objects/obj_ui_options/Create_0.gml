@@ -14,3 +14,12 @@ ui_index=0;
 ui_scale_def=2.42;
 ui_scale=0;
 ui_alpha=.5;
+
+enum sections{
+
+no_one,
+graphics,
+sounds,
+accessibility
+}
+confing_section=sections.no_one;

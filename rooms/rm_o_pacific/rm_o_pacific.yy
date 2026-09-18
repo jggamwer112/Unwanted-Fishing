@@ -61,7 +61,7 @@
   "name":"rm_o_pacific",
   "parent":{
     "name":"Ocean",
-    "path":"folders/Game/Maps/Ocean.yy",
+    "path":"folders/Maps/Ocean.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

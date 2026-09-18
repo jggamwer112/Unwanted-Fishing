@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Damage_values",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Damage_values",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/Game/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

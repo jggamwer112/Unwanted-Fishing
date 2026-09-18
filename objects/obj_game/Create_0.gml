@@ -31,10 +31,13 @@ global.point_decide=0;
 ////Inventário
 open_inv=false;
 inv_index=0;
-inv=ds_grid_create(2,3)
+//inv=ds_grid_create(2,3)
 
-ds_grid_set(inv,0,0,"'Alvarin' fishing rod") //item1
-ds_grid_set(inv,0,2,"A fishing rod created with purest iron and silver"+"\n in the deepest waters of this world."
-+"\n used as a weapon in the past by your father,"+"\n  ressembling the name of the warrior of waters...")//desc item1
-
+//ds_grid_set(inv,0,0,"'Alvarin' fishing rod") //item1
+//ds_grid_set(inv,0,2,"A fishing rod created with purest iron and silver"+"\n in the deepest waters of this world."
+//+"\n used as a weapon in the past by your father,"+"\n  ressembling the name of the warrior of waters...")//desc item1
+///UPGRADES
+global.f_rod_up="default";
+global.def_rod=true; ///verificando se tenho o rod default
+global.lvl2_rod=false;
 
