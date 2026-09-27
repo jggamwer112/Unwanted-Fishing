@@ -281,13 +281,14 @@ estado_atual=estados.desviar
 break;
 
 case 2:
+if _A or _D{
 estado_atual=estados.rolar
+}
 break;
 
 }
 
 if keyboard_check_released(ord("Q")){can_press=true;}
-
 
 
 
@@ -301,19 +302,22 @@ case estados.defendendo:
 
 case estados.desviar:
 dodge_time--;
-if dodge_time>0{
-	var col=place_meeting(x,y,obj_enemy_hitbox_attack);
 	sprite_index=spr_player_dodge;
+if dodge_time>0{
+
+	var col=place_meeting(x,y,obj_enemy_hitbox_attack);
+spd=lerp(spd,0,.08);
 	if col{
 	invincible=true;
 	if !alarm[3]{
 	alarm[3]=invincible_time;	
 	}
-	
+
 	dodging=true;
 	//show_message("Dodged")
 	pressed=0;
 	rol_acc=0;
+	spd=default_spd;
 dodge_time=dodge_def;
 rol_time=rol_def;
 //dodging=false;
@@ -321,6 +325,8 @@ rol_time=rol_def;
 	
 //show_message("Dodge acontecendo")		
 }else{
+
+spd=default_spd;
 pressed=0;
 estado_atual=estados.idle;
 dodge_time=dodge_def;
@@ -445,13 +451,21 @@ break;
 case estados.andar:
 
 sprite_index=spr_player_walk;
+
 if image_index>=3 and image_index<5{
 
-if !audio_is_playing(snd_walk_land){
-	
+if !audio_is_playing(walk_snd) and decide_snd{
+	if walk_snd=snd_walk_land{last_walk_snd=snd_walk_land}		
+if walk_snd=snd_walk_land_2{last_walk_snd=snd_walk_land_2}	
+	if decide_snd{
+	if last_walk_snd=snd_walk_land{walk_snd=snd_walk_land_2}
+	if last_walk_snd=snd_walk_land_2{walk_snd=snd_walk_land}
+
+	decide_snd=false;
+	}
 var _pitch=random_range(1,1.25);
-audio_play_sound(snd_walk_land,3,false,1,0);
-randomise();
+audio_play_sound(walk_snd,3,false,1,0,_pitch);
+decide_snd=true;
 }
 	
 }

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.37909296,
+  "duration":0.22045352,
   "exportDir":"",
   "name":"snd_walk_land",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_walk_land.wav",
-  "volume":0.45,
+  "volume":1.0,
 }

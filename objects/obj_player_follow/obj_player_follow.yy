@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_boat_game_ocean_death_3",
-    "path":"sprites/spr_boat_game_ocean_death_3/spr_boat_game_ocean_death_3.yy",
+    "name":"spr_cursor",
+    "path":"sprites/spr_cursor/spr_cursor.yy",
   },
   "spriteMaskId":null,
   "visible":false,

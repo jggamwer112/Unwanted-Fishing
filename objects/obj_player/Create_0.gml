@@ -77,3 +77,8 @@ rol_def=14;
 rol_time=rol_def;
 rol_length=8.25;
 rol_acc=0;
+
+///SFX
+walk_snd=snd_walk_land;
+last_walk_snd=snd_walk_land;
+decide_snd=true;

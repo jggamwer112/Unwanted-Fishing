@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.3215873,
+  "duration":0.40800452,
   "exportDir":"",
   "name":"snd_run",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_run.wav",
-  "volume":0.45,
+  "soundFile":"snd_run.mp3",
+  "volume":1.0,
 }

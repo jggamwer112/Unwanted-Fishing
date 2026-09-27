@@ -1,1 +1,1 @@
-show_message(global.f_rod_up)
+//show_message(global.f_rod_up)

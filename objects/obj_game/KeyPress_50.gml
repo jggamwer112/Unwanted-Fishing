@@ -1,1 +1,0 @@
-global.lvl2_rod=true;
