@@ -6,5 +6,6 @@ image_xscale=0;
 image_yscale=0;
 destiny=noone;
 
-vel_scale=.18
+vel_scale=.3
 vel_ang=2.45
+//show_message(instance_number(object_index))

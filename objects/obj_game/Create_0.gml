@@ -37,7 +37,7 @@ inv_index=0;
 //ds_grid_set(inv,0,2,"A fishing rod created with purest iron and silver"+"\n in the deepest waters of this world."
 //+"\n used as a weapon in the past by your father,"+"\n  ressembling the name of the warrior of waters...")//desc item1
 ///UPGRADES
-global.f_rod_up="default";
+global.f_rod_up="default"; ///indica qual parte de cima da vara está equipada
 global.def_rod=true; ///verificando se tenho o rod default
-global.lvl2_rod=false;
+global.lvl2_rod=false; ///verificando se tenho o rod 2
 

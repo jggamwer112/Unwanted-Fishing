@@ -35,12 +35,27 @@ draw_set_font(-1)
 var xx=x+48;
 var yy=y-45
 if !open_shop{
-if speech_bobble{
+if speech_bobble and talk!=noone{
 	draw_set_colour(c_black);
 	draw_set_font(fnt_game)
 	bobble_scale=lerp(bobble_scale,bobble_scale_def,.1)
 randomise();
 var talk_copy=string_copy(talk,0,bobble_index)
+if bobble_index<string_length(talk){
+if bobble_index==round(bobble_index){
+
+if !audio_is_playing(snd_shop_guy_talk){
+	var pitch=random_range(.4,.6);
+	randomise();
+audio_play_sound(snd_shop_guy_talk,2,false,1,0,pitch)	
+
+}
+}
+}
+show_debug_message(string_length(talk_copy))	
+//audio_play_sound(snd_shop_guy_talk,2,false)	
+	
+
 	draw_sprite_ext(spr_speech_bobble,0,xx,yy,bobble_scale,bobble_scale,0,c_white,1)	
 	draw_text_transformed(x+19,y-74,talk_copy,bobble_scale/3.22,bobble_scale/3.22,0);
 //draw_text_ext(x+12, y-70, "DESTRUIR LEGAL LEGAL LEGAL LEGAL ", 3, 32)

@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"sh_agua",
+  "name":"sh_agua",
+  "parent":{
+    "name":"shaders",
+    "path":"folders/Game/shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.3684354,
+  "duration":1.9513832,
   "exportDir":"",
   "name":"snd_transition",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_transition.mp3",
+  "soundFile":"snd_transition.wav",
   "volume":0.7,
 }

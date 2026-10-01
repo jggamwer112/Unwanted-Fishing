@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_point",
-    "path":"sprites/spr_point/spr_point.yy",
+    "name":"spr_point_boss",
+    "path":"sprites/spr_point_boss/spr_point_boss.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -9,7 +9,7 @@ other.interact_input=true;
 }else{other.interact_input=false;}
 	
 }
-#region habilitando speech & mudança de sprite do mercador
+#region habilitando speech & mudança de spaarite do mercador
 if instance_exists(obj_player){
 if distance_to_object(obj_player)<60{
 	speech_bobble=true;
@@ -35,8 +35,9 @@ if speech_bobble{
 	talk=choose(txt1,txt2)	
 		randomise();
 	}
+
 bobble_index+=bobble_velc	
-	
+
 }else{
 	talk=noone
 	bobble_scale=lerp(bobble_scale,0,.1)	
@@ -78,5 +79,26 @@ stun=false;
 }	
 	
 }
+#region ////criando botôes
+if open_shop and itens_avaliable>0{
+if instance_number(obj_shop_button)<=itens_avaliable{
+	if itens_avaliable>1{
+		repeat(itens_avaliable){
+	instance_create_layer(x,y,"instances",obj_shop_button);
+		}
+	}else if itens_avaliable=1{
+		
+	instance_create_layer(x,y,"instances",obj_shop_button);
+	}
+} 
+}else if !open_shop{
+	
+if instance_exists(obj_shop_button){
+	
+instance_destroy(obj_shop_button);	
+}
+	
+}
 
+#endregion
 #endregion

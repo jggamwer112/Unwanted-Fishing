@@ -2,9 +2,9 @@ if global.game_over{
 	if room!=rm_game_over{room_goto(rm_game_over);}
 	
 }
-var col1=#332C50
-var col2=#46878F
-var col3=#94E344
+//var col1=#332C50
+//var col2=#46878F
+//var col3=#94E344
 ///inventário
 //if open_inv{
 //var xx=(room_width/2)-248

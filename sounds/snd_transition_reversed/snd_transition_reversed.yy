@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.3684354,
+  "duration":1.7995012,
   "exportDir":"",
   "name":"snd_transition_reversed",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_transition_reversed.mp3",
+  "soundFile":"snd_transition_reversed.wav",
   "volume":0.7,
 }

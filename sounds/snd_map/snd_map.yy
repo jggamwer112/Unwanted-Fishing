@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":16.068481,
+  "duration":25.991837,
   "exportDir":"",
   "name":"snd_map",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_map.mp3",
-  "volume":1.0,
+  "volume":0.55,
 }

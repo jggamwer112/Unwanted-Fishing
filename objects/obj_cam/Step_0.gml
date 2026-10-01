@@ -41,9 +41,15 @@ if targ!=obj_shop
 x=lerp(x,_xx,.1);
 y=lerp(y,_yy,.1);
 }else{
+if obj_player.x>obj_shop.x{
 
 x=lerp(x,targ.x+5,.1)	
 y=lerp(y,targ.y-32,.1)	
+}else if obj_player.x<obj_shop.x{	
+
+x=lerp(x,targ.x-75,.1)	
+y=lerp(y,targ.y-32,.1)		
+}
 	
 }
 x=clamp(x,0,room_width);
