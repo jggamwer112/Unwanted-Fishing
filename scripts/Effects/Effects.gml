@@ -1,6 +1,6 @@
-function flash_screen(colour){
+//function flash_screen(colour){
 
-}
+//}
 
 function hit(){
 
@@ -28,6 +28,18 @@ var tempo_total=current_time+time;
 while current_time<tempo_total{}
 }
 
+function screen_shake(intx,inty,duration,velc)
+{
+	
+with obj_cam_ocean_gm{
+	
+shake_time=duration
+shake_x=intx
+shake_y=inty
+shake_velc=velc
+}
+	
+}
 //function color_hit(col1,col2,ammount,alpha){
 
 //var _color_merge=merge_color(col1,col2,ammount);

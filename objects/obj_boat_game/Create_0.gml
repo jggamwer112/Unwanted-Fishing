@@ -1,3 +1,4 @@
+//effect_create_above(ef_rain, x, y, 1, c_yellow);
 image_xscale=1.25
 image_yscale=image_xscale
 direction=image_angle;
@@ -19,7 +20,11 @@ afterimage=false;
 alpha_aftimg=.8;
 //score
 score=0;
-
+can_score_vfx=true;
+score_vfx=false;
+score_int=0;
+score_time_def=20;
+score_time=score_time_def;
 death=false;
 ///sound
 mov_sound=false;

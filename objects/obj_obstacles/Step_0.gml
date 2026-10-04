@@ -11,4 +11,14 @@ with obj_boat_game{
 	}
 }
 
-if x<-5{instance_destroy(); score++;}
+if x<-5{instance_destroy(); score++; 
+	with obj_boat_game{
+		
+		if can_score_vfx{
+		score_vfx=true;
+		can_score_vfx=false;
+	}	
+		
+	}
+	
+	}

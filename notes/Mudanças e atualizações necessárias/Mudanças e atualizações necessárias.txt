@@ -10,12 +10,12 @@
 --> Corrigir animação do dodge do player
 
 -Modo "Ocean"
---> Sprite do player no barco, pois está desproporcional(a cabeça do player faz ele parecer maior no barco)
---> Efeito visual de água quando o barco se move
---> Animação de morte do player (Adicionar mais dispersão entre as partes do barco)
---> Transferur efeito de "Screen Shake" para código, para que se tenha uma manipulação melhor do efeito
+--> Sprite do player no barco, pois está desproporcional(a cabeça do player faz ele parecer maior no barco) OK
+--> Efeito visual de água quando o barco se move OK
+--> Animação de morte do player (Adicionar mais dispersão entre as partes do barco) OK
+--> Transferur efeito de "Screen Shake" para código, para que se tenha uma manipulação melhor do efeito OK
 --> Efeitos visuais para a UI
---> Efeitos visuais para hit do barco + sprite(fazer o player com olhos fechados no hit por exemplo)
+--> Efeitos visuais para hit do barco + sprite(fazer o player com olhos fechados no hit por exemplo) OK
 
 -Mudanças gerais
 --> Alterar a água (pode-se reciclar a água do Bobble Protector para verificar o resultado)

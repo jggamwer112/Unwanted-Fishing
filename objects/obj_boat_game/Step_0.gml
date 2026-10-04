@@ -4,13 +4,14 @@ if life<=0{
 	
 gravity=.18
 visible=false;
-layer_set_visible("screen_shake",true);
+//layer_set_visible("screen_shake",true);
+screen_shake(15,15,25,.2)
 death=true
 	
 }
 
 if death{
-if !instance_exists(obj_boat_death_1){instance_create_layer(x-20,y,"instances",obj_boat_death_1)}
+if !instance_exists(obj_boat_death_1){var inst=instance_create_layer(x-20,y,"instances",obj_boat_death_1)}
 if !instance_exists(obj_boat_death_2){instance_create_layer(x+20,y,"instances",obj_boat_death_2)}
 if !instance_exists(obj_boat_death_3){instance_create_layer(x,y,"instances",obj_boat_death_3)}
 
@@ -45,7 +46,13 @@ motion_add(direction,-.09)
 	}
 }
 }
-
+if _A or _D or _W{
+	
+var inst=instance_create_layer(x,y,"Move_water_VFX",obj_water_move);	
+var inst2=instance_create_layer(x,y,"Move_water_VFX",obj_water_move);	
+	inst.image_xscale=-1
+	inst2.image_xscale=+1
+}
 if life>0{
 x=clamp(x,20,room_width)
 y=clamp(y,20,room_height)
@@ -77,7 +84,7 @@ alpha-=.05
 }
 
 //UI
-life_ui_col=merge_colour(c_red,c_white,col_int);
+life_ui_col=merge_colour(#332C50,c_white,col_int);
 life_ui_ang=lerp(life_ui_ang,0,.1);
 
 col_int+=.07
@@ -106,4 +113,22 @@ sprite_index=spr_boat_game_ocean_invincible
 score=clamp(score,0,100);
 
 if score>=100{score=0 if life<3{life++;}}
+
+	
+	
+
+
+if score_vfx{
+	if score_time>0{
+	score_int=lerp(score_int,9,.1);
+	}
+	if score_time<=0{score_vfx=false}
+	score_time--;
+
+}else{
+score_time=score_time_def
+score_int=lerp(score_int,0,.1)
+can_score_vfx=true;
+}
+	show_debug_message(score_vfx)
 #endregion

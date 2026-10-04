@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_water_test",
+  "%Name":"obj_cam_ocean_gm",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":16,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_water_test",
+  "name":"obj_cam_ocean_gm",
   "overriddenProperties":[],
   "parent":{
-    "name":"objects",
-    "path":"folders/Game/objects.yy",
+    "name":"Ocean_maps",
+    "path":"folders/Game/objects/Ocean_maps.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_map_bg_2",
-    "path":"sprites/spr_map_bg_2/spr_map_bg_2.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

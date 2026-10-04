@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":29.701225,
+  "duration":36.04898,
   "exportDir":"",
   "name":"snd_land_1",
   "parent":{

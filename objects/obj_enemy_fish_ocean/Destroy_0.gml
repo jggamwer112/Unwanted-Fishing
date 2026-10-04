@@ -12,4 +12,12 @@ instance_create_layer(x,y,"instances",obj_life);
 	
 	randomize();
 	score++;
+	with obj_boat_game{
+		
+		if can_score_vfx{
+		score_vfx=true;
+		can_score_vfx=false;
+	}	
+		
+	}
 }
